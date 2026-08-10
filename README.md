@@ -28,19 +28,35 @@ server ke internet menggunakan Cloudflare Tunnel dan mencoba WebServer.
 Ubuntu Server digunakan sebagai server utama untuk menjalankan
 service yang akan diakses melalui jaringan.
 
-## 2. SSH
+## 2. Membeli domain 
+
+membeli domain di domanesia untuk mempermudah ssh dan mengupload web server
+
+## 3. CLoudflare
+
+setelah membeli domain kita harus mentunneling menggunakan cloudflare agar aman
+step 1
+pergi ke ke cloudflare lalu pergi ke domain dan masukan domain yang sudah dibeli
+lalu ganti dengan nameserver yang disediakan oleh cloudflare ke web domain yang sudah dibeli
+
+step 2
+mentunneling domain perge ke acces lalu pilih plan zero trust dan lakukan sterusnya 
+
+## 4. ssh
 
 SSH digunakan untuk melakukan remote access ke Ubuntu Server.
 
-## 3. Domain
+## 5. pasang web server
 
-Domain digunakan sebagai alamat yang lebih mudah digunakan
-untuk mengakses service pada server.
+sudo apt update && sudo apt install -y nginx
+sudo systemctl status nginx
 
-## 4. Cloudflare Tunnel
+Masukkan alamat IP Ubuntu Server di chrome bar (misalnya:(http://192.168.1.13:) atau IP lokal baru dari hasil ip a
 
-Cloudflare Tunnel digunakan untuk menghubungkan server ke
-Cloudflare tanpa perlu membuka port inbound secara langsung.
+## 6. Edit Web
+
+cd /var/www/html
+sudo nano index.html
 
 ## 5. Testing
 
