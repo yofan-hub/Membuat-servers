@@ -7,10 +7,10 @@ server ke internet menggunakan Cloudflare Tunnel dan mencoba WebServer.
 
 - [x] Ubuntu Server sudah terinstall
 - [x] Ubuntu Server sudah berjalan
-- [x] SSH sudah dikonfigurasi
-- [x] Domain sudah dibeli
-- [x] Cloudflare sudah dikonfigurasi
-- [x] Cloudflare Tunnel sudah dibuat
+- [] SSH sudah dikonfigurasi
+- [] Domain sudah dibeli
+- [] Cloudflare sudah dikonfigurasi
+- [] Cloudflare Tunnel sudah dibuat
 
 ## Tahapan
 
