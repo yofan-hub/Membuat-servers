@@ -7,8 +7,8 @@ server ke internet menggunakan Cloudflare Tunnel dan mencoba WebServer.
 
 - [x] Ubuntu Server sudah terinstall
 - [x] Ubuntu Server sudah berjalan
-- [] SSH sudah dikonfigurasi
-- [] Domain sudah dibeli
+- [x] SSH sudah dikonfigurasi
+- [x] Domain sudah dibeli
 - [] Cloudflare sudah dikonfigurasi
 - [] Cloudflare Tunnel sudah dibuat
 
@@ -58,7 +58,45 @@ Masukkan alamat IP Ubuntu Server di chrome bar (misalnya:(http://192.168.1.13:) 
 cd /var/www/html
 sudo nano index.html
 
-## 5. Testing
+## 6. Membuat ip menjadi statis
 
-Setelah seluruh konfigurasi selesai, dilakukan pengujian untuk
-memastikan server dapat diakses melalui domain.
+lakukan ip a untuk mencatat ip dan juga ip route
+
+#Edit File Konfigurasi Netplan
+
+ls /etc/netplan/
+ sudo nano /etc/netplan/00-installer-config.yaml
+
+ etwork:
+  ethernets:
+    enp0s3:
+      dhcp4: true
+      dhcp6: true
+      match:
+        macaddress: 08:00:27:d9:db:a8
+      set-name: enp0s3
+  version: 2
+
+  ubah dhcp4 dan 6 menjadi false dan tambahkan ip dan gateway yang sudah di catat hingga menjadi
+
+  network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: 08:00:27:d9:db:a8
+      set-name: enp0s3
+      addresses:
+        - 192.168.1.13/24
+      routes:
+        - to: default
+          via: 192.168.1.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 1.1.1.1
+  version: 2
+
+lalu lakukan
+sudo netplan apply
